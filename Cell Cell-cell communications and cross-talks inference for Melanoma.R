@@ -303,5 +303,4 @@ x = readRDS("cellchat_Melnoma_LS.rds")
 
 x = readRDS("D:/CELLCHAT2/Dr Abdelrahman TASK/Editting/Melnoma.single.r")
 
-# Subset specific columns and rows from Seurat object using subset function
-subset_obj <- subset(Melanoma, select = y, cells =c())
+
