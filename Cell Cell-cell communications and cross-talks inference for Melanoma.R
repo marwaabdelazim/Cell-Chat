@@ -37,19 +37,15 @@ library(Signac)
 library(loomR)
 library(scater)
 
-# Reading Data  -----------------------------------------------------------
+# Loading Data  -----------------------------------------------------------
 
-#"Convert from Scanpy to Seurat...
-adata <- read_h5ad("D:/Deep learning Single Cell Course 5-2023/LAB4 Cellchat/MelanomaAnnNoS.h5ad")
-adata
-dataseurat<- CreateSeuratObject(counts = t(adata$X), meta.data = adata$obs)
-Melnoma <- dataseurat 
-Melnoma
+Melanoma <- readRDS("D:/Deep learning Single Cell Course 5-2023/LAB4 Cellchat/Melnoma.rds")
+Melanoma
 
 # Part I: Data input & processing and initialization of CellChat ----------
 
 #1- Create a CellChat object
-cellchat <- createCellChat(object = Melnoma , group.by = "cell_type") #, assay = "RNA", datatype = "spatial", scale.factors = scale.factors,  do.sparse = T
+cellchat <- createCellChat(object = Melanoma , group.by = "cell_type") #, assay = "RNA", datatype = "spatial", scale.factors = scale.factors,  do.sparse = T
 levels(cellchat@idents) # show factor levels of the cell labels
 groupSize <- as.numeric(table(cellchat@idents)) # number of cells in each cell group
 groupSize
@@ -301,6 +297,6 @@ netVisual_embeddingZoomIn(cellchat, type = "structural", nCol = 2)
 saveRDS(cellchat, file = "cellchat_Melnoma_LS.rds")
 x = readRDS("cellchat_Melnoma_LS.rds")
 
-x = readRDS("D:/CELLCHAT2/Dr Abdelrahman TASK/Editting/Melnoma.single.r")
+
 
 
